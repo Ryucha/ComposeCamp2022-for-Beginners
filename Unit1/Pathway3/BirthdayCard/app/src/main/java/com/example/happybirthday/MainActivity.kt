@@ -68,7 +68,20 @@ fun BirthdayGreetingWithText(message: String, from: String) {
 @Composable
 fun BirthdayGreetingWithImage(message: String, from: String) {
     val image = painterResource(R.drawable.androidparty)
-    Image(painter = image, contentDescription = null)
+    Box {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            contentScale = ContentScale.Crop,
+
+        )
+        BirthdayGreetingWithText(message = message, from = from)
+    }
+
+
 }
 
 // 4. 이미지 컴포저블 추가
