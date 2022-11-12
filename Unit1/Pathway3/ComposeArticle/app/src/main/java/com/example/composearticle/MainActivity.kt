@@ -41,7 +41,6 @@ fun ComposeArticleApp() {
     val longDescription: String = stringResource(id = R.string.compose_long_desc)
     val imagePainter: Painter = painterResource(id = R.drawable.bg_compose_background)
 
-    val modifier: Modifier = Modifier.fillMaxWidth()
     ArticleCard(
         title = title,
         shortDescription = shortDescription,
@@ -58,11 +57,16 @@ private fun ArticleCard(
     imagePainter: Painter,
     modifier: Modifier = Modifier,
 ) {
-    Column() {
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+    ) {
+
         Image(
             painter = imagePainter,
             contentDescription = null,
-            modifier = modifier,
+            modifier = modifier.fillMaxWidth(),
         )
         Text(
             text = title,
