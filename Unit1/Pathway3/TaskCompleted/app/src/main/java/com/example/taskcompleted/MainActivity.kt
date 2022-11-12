@@ -39,10 +39,28 @@ fun TaskCompletedScreen() {
     val title: String = stringResource(id = R.string.all_task_completed)
     val subString: String = stringResource(id = R.string.nice_work)
 
-    Column() {
+    Column(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+    ) {
         Image(painter = imagePainter, contentDescription = null)
-        Text(text = title)
-        Text(text = subString)
+        Text(
+            text = title,
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(top = 24.dp, bottom = 8.dp)
+                .wrapContentWidth(Alignment.CenterHorizontally),
+        )
+        Text(
+            text = subString,
+            fontSize = 16.sp,
+            modifier = Modifier
+                .wrapContentWidth(Alignment.CenterHorizontally),
+        )
     }
 }
 
