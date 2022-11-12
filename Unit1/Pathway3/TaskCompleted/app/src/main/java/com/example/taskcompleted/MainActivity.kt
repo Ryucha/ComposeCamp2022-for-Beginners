@@ -11,6 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -22,15 +23,31 @@ import com.example.taskcompleted.ui.theme.TaskCompletedTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { }
+        setContent {
+            TaskCompletedTheme {
+                Surface(color = MaterialTheme.colors.background) {
+                    TaskCompletedScreen()
+                }
+            }
+        }
     }
 }
 
 @Composable
 fun TaskCompletedScreen() {
-    Column( ) { }
+    val imagePainter: Painter = painterResource(id = R.drawable.ic_task_completed)
+    val title: String = stringResource(id = R.string.all_task_completed)
+    val subString: String = stringResource(id = R.string.nice_work)
+
+    Column() {
+        Image(painter = imagePainter, contentDescription = null)
+        Text(text = title)
+        Text(text = subString)
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() { }
+fun DefaultPreview() {
+    TaskCompletedScreen()
+}
