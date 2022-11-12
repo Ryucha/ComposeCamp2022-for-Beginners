@@ -5,13 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -41,7 +40,8 @@ fun ComposeArticleApp() {
     val shortDescription: String = stringResource(id = R.string.compose_short_desc)
     val longDescription: String = stringResource(id = R.string.compose_long_desc)
     val imagePainter: Painter = painterResource(id = R.drawable.bg_compose_background)
-    
+
+    val modifier: Modifier = Modifier.fillMaxWidth()
     ArticleCard(
         title = title,
         shortDescription = shortDescription,
@@ -62,10 +62,25 @@ private fun ArticleCard(
         Image(
             painter = imagePainter,
             contentDescription = null,
+            modifier = modifier,
         )
-        Text(text = title)
-        Text(shortDescription)
-        Text(longDescription)
+        Text(
+            text = title,
+            modifier = modifier
+                .padding(16.dp),
+            fontSize = 24.sp,
+        )
+        Text(
+            text = shortDescription,
+            textAlign = TextAlign.Justify,
+            modifier = modifier
+                .padding(start = 16.dp, end = 16.dp),
+        )
+        Text(
+            text = longDescription,
+            textAlign = TextAlign.Justify,
+            modifier = modifier.padding(16.dp),
+        )
 
     }
 }
