@@ -37,28 +37,33 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeQuadrantApp() {
     Column() {
-        Row() {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(id = R.string.first_title),
                 description = stringResource(id = R.string.first_description),
                 backgroundColor = Color.Green,
+                modifier = Modifier.weight(1f)
             )
             ComposableInfoCard(
                 title = stringResource(id = R.string.second_title),
                 description = stringResource(id = R.string.second_description),
                 backgroundColor = Color.Yellow,
+                modifier = Modifier.weight(1f)
             )
         }
-        Row() {
+        Row(Modifier.weight(1f)) {
             ComposableInfoCard(
                 title = stringResource(id = R.string.third_title),
                 description = stringResource(id = R.string.third_description),
                 backgroundColor = Color.Cyan,
+                modifier = Modifier.weight(1f)
             )
+
             ComposableInfoCard(
                 title = stringResource(id = R.string.fourth_title),
                 description = stringResource(id = R.string.fourth_description),
                 backgroundColor = Color.LightGray,
+                modifier = Modifier.weight(1f)
             )
         }
     }
@@ -68,12 +73,21 @@ fun ComposeQuadrantApp() {
 private fun ComposableInfoCard(
     title: String, description: String, backgroundColor: Color, modifier: Modifier = Modifier
 ) {
-    Column() {
+    Column(
+        modifier = modifier
+            .background(backgroundColor)
+            .padding(16.dp)
+            .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+    ) {
         Text(
-            text = title, fontWeight = FontWeight.Bold, modifier = modifier.padding(bottom = 16.dp)
+            text = title, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp)
         )
         Text(
             description,
+            textAlign = TextAlign.Justify
         )
 
     }
